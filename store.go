@@ -12,6 +12,7 @@ func NewStore() *Store {
 
 	return &s
 }
+
 func (s *Store) AddUser(u User) int64 {
 	s.lastInsertedID++
 	u.ID = s.lastInsertedID
