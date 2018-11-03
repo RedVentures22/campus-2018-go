@@ -10,7 +10,7 @@ func main() {
 
 	r.HandleFunc("/health", health)
 
-	err := http.ListenAndServe(os.Getenv("ADDR"), r)
+	err := http.ListenAndServe(os.Getenv("ADDR"), withLog(r))
 	if err != nil {
 		panic(err)
 	}
