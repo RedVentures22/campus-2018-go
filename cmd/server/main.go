@@ -17,7 +17,7 @@ func main() {
 	r := http.NewServeMux()
 
 	r.HandleFunc("/health", health)
-	r.HandleFunc("/v1/users", h.routerUsers)
+	r.Handle("/v1/users", withAuth(http.HandlerFunc(h.routerUsers)))
 
 	err := http.ListenAndServe(os.Getenv("ADDR"), withLog(r))
 	if err != nil {
